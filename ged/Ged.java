@@ -83,15 +83,6 @@ public class Ged{
 
 	/**
 	 * Exibe as informações contidas no array fornecido.
-	 * <p>
-	 *    Tipos suportados:
-	 * </p>
-	 * <pre>
-	 *int[];
-	 *float[];
-	 *double[];
-	 *String[];
-	 * </pre>
 	 * @param array array com os dados.
 	 */
 	public void printArray(Object array) {
@@ -100,15 +91,6 @@ public class Ged{
 
 	/**
 	 * Exibe as informações contidas no array fornecido.
-	 * <p>
-	 *    Tipos suportados:
-	 * </p>
-	 * <pre>
-	 *int[];
-	 *float[];
-	 *double[];
-	 *String[];
-	 * </pre>
 	 * @param array array com os dados.
 	 * @param nome nome personalizado para o array impresso.
 	 */
@@ -118,15 +100,6 @@ public class Ged{
 
 	/**
 	 * Exibe as informações contidas na matriz fornecida.
-	 * <p>
-	 *    Tipos suportados:
-	 * </p>
-	 * <pre>
-	 *int[];
-	 *float[];
-	 *double[];
-	 *String[];
-	 * </pre>
 	 * @param matriz matriz com os dados.
 	 */
 	public void printMatriz(Object matriz) {
@@ -135,15 +108,6 @@ public class Ged{
 
 	/**
 	 * Exibe as informações contidas na matriz fornecida.
-	 * <p>
-	 *    Tipos suportados:
-	 * </p>
-	 * <pre>
-	 *int[];
-	 *float[];
-	 *double[];
-	 *String[];
-	 * </pre>
 	 * @param matriz matriz com os dados.
 	 * @param nome nome personalizado para a matriz impressa.
 	 */
