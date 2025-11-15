@@ -15,7 +15,5 @@ public class Main {
             {"a", "b"},
             {"a", "b"},
         });
-
-        dados.print();
     }
 }

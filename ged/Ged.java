@@ -303,7 +303,7 @@ public class Ged{
 	 * @throws IllegalArgumentException o conteúdo dos dados for nulo.
 	 * @throws IllegalArgumentException se o indice for inválido.
 	 */
-	public void remLin(Dados dados, int id) {
+	public void dropLin(Dados dados, int id) {
 		md.dropLin(dados, id);
 	}
 
@@ -314,7 +314,7 @@ public class Ged{
 	 * @throws IllegalArgumentException o conteúdo dos dados for nulo.
 	 * @throws IllegalArgumentException se o indice for inválido.
 	 */
-	public void remCol(Dados dados, int id) {
+	public void dropCol(Dados dados, int id) {
 		md.dropCol(dados, id);
 	}
 
@@ -405,7 +405,7 @@ public class Ged{
 	 * </pre>
 	 * @param dados conjunto de dados.
 	 */
-	public void remNaoNumericos(Dados dados) {
+	public void dropNaoNumericos(Dados dados) {
 		md.dropNaoNumericos(dados);
 	}
 
@@ -537,7 +537,7 @@ public class Ged{
 	 * </pre>
 	 * @param dados conjunto de dados.
 	 */
-	public void remDuplicadas(Dados dados) {
+	public void dropDuplicadas(Dados dados) {
 		md.dropDuplicadas(dados);
 	}
 
