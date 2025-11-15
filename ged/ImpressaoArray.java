@@ -1,5 +1,7 @@
 package ged;
 
+import java.lang.reflect.Array;
+
 class ImpressaoArray {
 	
 	/**
@@ -9,74 +11,41 @@ class ImpressaoArray {
 
 	/**
 	 * Exibe o conteúdo do array.
-	 * @param array array base.
+	 * @param arr array base.
 	 */
-	public void printArray(Object array) {
-		printArray(array, "");
+	public void printArray(Object arr) {
+		printArray(arr, "");
 	}
 
 	/**
 	 * Exibe o conteúdo do array.
-	 * @param array array base.
+	 * @param arr array base.
 	 * @param nome nome para impressão.
 	 */
-	public void printArray(Object array, String nome) {
-		String espacamento = "  ";
-
-		if (nome.isEmpty()) {
+	public void printArray(Object arr, String nome) {
+        if (!arr.getClass().isArray()) {
+			throw new IllegalArgumentException("\nObjeto informado não é um array.");
+        }
+		
+        if (nome.isEmpty()) {
 			System.out.println("Array = [");
-		
-		} else {
+        } else {
 			System.out.println(nome + " = [");
-		}
-
-		if (array instanceof int[]) {
-			int[] arr = (int[]) array;
-
-			System.out.print(espacamento + arr[0]);
-			for (int i = 1; i < arr.length; i++) {
-				System.out.print(", " + arr[i]);
-			}
-			System.out.println();
-	
-			System.out.println("]");
+        }
 		
-		}else if (array instanceof float[]) {
-			float[] arr = (float[]) array;
+		String pad = "  ";
+        int tam = Array.getLength(arr);
 
-			System.out.print(espacamento + arr[0]);
-			for (int i = 1; i < arr.length; i++) {
-				System.out.print(", " + arr[i]);
-			}
-			System.out.println();
-	
-			System.out.println("]");
-		
-		}else if (array instanceof double[]) {
-			double[] arr = (double[]) array;
+        if (tam > 0) {
+            System.out.print(pad + Array.get(arr, 0));
 
-			System.out.print(espacamento + arr[0]);
-			for (int i = 1; i < arr.length; i++) {
-				System.out.print(", " + arr[i]);
-			}
-			System.out.println();
-	
-			System.out.println("]");
-		
-		}else if (array instanceof String[]) {
-			String[] arr = (String[]) array;
-			
-			System.out.print(espacamento + arr[0]);
-			for (int i = 1; i < arr.length; i++) {
-				System.out.print(", " + arr[i]);
-			}
-			System.out.println();
-	
-			System.out.println("]");
-		
-		} else {
-			throw new IllegalArgumentException("Tipo de array não suportado.");
-		}
+            for (int i = 1; i < tam; i++) {
+                System.out.print(", " + Array.get(arr, i));
+            }
+        }
+
+        System.out.println();
+        System.out.println("]");
 	}
 
 }

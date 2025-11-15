@@ -1,4 +1,3 @@
-import ged.Dados;
 import ged.Ged;
 
 public class Main {
@@ -9,11 +8,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Dados dados = new Dados();
-
-        dados.atribuir(new String[][] {
-            {"a", "b"},
-            {"a", "b"},
-        });
+        Double[] arr = {1., 2., 3.};
+        ged.printArray(arr);
     }
 }
