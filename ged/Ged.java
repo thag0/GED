@@ -23,8 +23,7 @@ package ged;
 */
 public class Ged{
 
-	ImpressaoMatriz im = new ImpressaoMatriz();//exibição
-	ImpressaoArray ia = new ImpressaoArray();//exibição
+	Impressao im = new Impressao();//exibição
 	ImpressaoDados id = new ImpressaoDados();//exibição
 	ManipuladorDados md = new ManipuladorDados();;//manipulador de dados
 	GerenciadorArquivos ga = new GerenciadorArquivos();//leitor de arquivos
@@ -96,7 +95,7 @@ public class Ged{
 	 * @param array array com os dados.
 	 */
 	public void printArray(Object array) {
-		ia.printArray(array);
+		im.printArray(array);
 	}
 
 	/**
@@ -114,7 +113,7 @@ public class Ged{
 	 * @param nome nome personalizado para o array impresso.
 	 */
 	public void printArray(Object array, String nome) {
-		ia.printArray(array, nome);
+		im.printArray(array, nome);
 	}
 
 	/**
