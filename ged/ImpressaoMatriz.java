@@ -1,5 +1,7 @@
 package ged;
 
+import java.lang.reflect.Array;
+
 class ImpressaoMatriz{
 	
 	/**
@@ -20,65 +22,35 @@ class ImpressaoMatriz{
 	 * @param matriz matriz base.
 	 * @param nome nome para exibição.
 	 */
-	public void printMatriz(Object matriz, String nome) {
-		String espacamento = "  ";
+    public void printMatriz(Object matriz, String nome) {
+        if (!matriz.getClass().isArray() || 
+            !matriz.getClass().getComponentType().isArray()) {
+            throw new IllegalArgumentException("\nObjeto informado não é uma matriz.");
+        }
 
-		if (nome.isEmpty()) {
-			System.out.println("Matriz = [");
-		}else{
-			System.out.println(nome + " = [");
-		}
+        String pad = "  ";
 
-		if (matriz instanceof int[][]) {
-			int[][] mat = (int[][]) matriz;
+        if (nome.isEmpty()) {
+            System.out.println("Matriz = [");
+        } else {
+            System.out.println(nome + " = [");
+        }
 
-			for (int i = 0; i < mat.length; i++) {
-				System.out.print(espacamento);
-				for (int j = 0; j < mat[i].length; j++) {
-					System.out.print(mat[i][j] + "  ");
-				}
-				System.out.println();
-			}
-			System.out.println("]");
-		
-		}else if (matriz instanceof float[][]) {
-			float[][] mat = (float[][]) matriz;
+        int linhas = Array.getLength(matriz);
 
-			for (int i = 0; i < mat.length; i++) {
-				System.out.print(espacamento);
-				for (int j = 0; j < mat[i].length; j++) {
-					System.out.print(mat[i][j] + "  ");
-				}
-				System.out.println();
-			}
-			System.out.println("]");
-		
-		}else if (matriz instanceof double[][]) {
-			double[][] mat = (double[][]) matriz;
+        for (int i = 0; i < linhas; i++) {
+            Object linha = Array.get(matriz, i);
+            int colunas = Array.getLength(linha);
 
-			for (int i = 0; i < mat.length; i++) {
-				System.out.print(espacamento);
-				for (int j = 0; j < mat[i].length; j++) {
-					System.out.print(mat[i][j] + "  ");
-				}
-				System.out.println();
-			}
-			System.out.println("]");
-		
-		}else if (matriz instanceof String[][]) {
-			String[][] mat = (String[][]) matriz;
+            System.out.print(pad);
 
-			for (int i = 0; i < mat.length; i++) {
-				System.out.print(espacamento);
-				for (int j = 0; j < mat[i].length; j++) {
-					System.out.print(mat[i][j] + "  ");
-				}
-				System.out.println();
-			}
-			System.out.println("]");
-		
-		} else {
-			throw new IllegalArgumentException("Tipo de matriz não suportado.");
-		}
-	}
+            for (int j = 0; j < colunas; j++) {
+                System.out.print(Array.get(linha, j) + "  ");
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("]");
+    }
 }

@@ -8,7 +8,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Double[] arr = {1., 2., 3.};
+        int[][] arr = {{1,2}, {3, 4}};
         ged.printArray(arr);
     }
 }
