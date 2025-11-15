@@ -7,10 +7,19 @@ class ImpressaoMatriz{
 	 */
 	public ImpressaoMatriz() {}
 
+	/**
+	 * Exive o conteúdo da matriz.
+	 * @param matriz matriz base.
+	 */
 	public void printMatiz(Object matriz) {
 		printMatriz(matriz, "");
 	}
 	
+	/**
+	 * Exibe o conteúdo da martiz.
+	 * @param matriz matriz base.
+	 * @param nome nome para exibição.
+	 */
 	public void printMatriz(Object matriz, String nome) {
 		String espacamento = "  ";
 

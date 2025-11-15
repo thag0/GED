@@ -19,19 +19,18 @@ package ged;
  *    Aos poucos são adicionadas novas funcionalidades de acordo com as necessidades que surgem então o
  *    Ged sempre pode sofrer alterações e melhorias com o passar do tempo.
  * </p>
- * @see https://github.com/thag0/Treinando-Rede-Neural-Artificial/tree/main/utilitarios/ged
  * @author Thiago Barroso, acadêmico de Engenharia da Computação pela Universidade Federal do Pará, Campus Tucuruí. Maio/2023.
 */
 public class Ged{
 
-	ImpressaoMatriz im;//exibição
-	ImpressaoArray ia;//exibição
-	ImpressaoDados id;//exibição
-	ManipuladorDados md;//manipulador de dados
-	GerenciadorArquivos ga;//leitor de arquivos
-	ConversorDados cd;//conversor de dados 
-	TreinoTeste gtt;//gerenciador de treino e teste da rede
-	OperadorMatriz om;//operador de matrizes
+	ImpressaoMatriz im = new ImpressaoMatriz();//exibição
+	ImpressaoArray ia = new ImpressaoArray();//exibição
+	ImpressaoDados id = new ImpressaoDados();//exibição
+	ManipuladorDados md = new ManipuladorDados();;//manipulador de dados
+	GerenciadorArquivos ga = new GerenciadorArquivos();//leitor de arquivos
+	ConversorDados cd = new ConversorDados();//conversor de dados 
+	TreinoTeste gtt = new TreinoTeste();//gerenciador de treino e teste da rede
+	OperadorMatriz om = new OperadorMatriz();//operador de matrizes
 	OperadorMatrizMultithread omt;
 
 	/**
@@ -43,40 +42,26 @@ public class Ged{
 	 * </p>
 	 */
 	public Ged() {
-		im = new ImpressaoMatriz();
-		ia = new ImpressaoArray();
-		id = new ImpressaoDados();
-		md = new ManipuladorDados();
-		ga = new GerenciadorArquivos();
-		gtt = new TreinoTeste();
-		cd = new ConversorDados();
-		om = new OperadorMatriz();
-
 		omt = new OperadorMatrizMultithread(Runtime.getRuntime().availableProcessors()/2);
 	}
 
 	/**
-	 * Função auxiliar destinada ao uso no windows.
-	 * <p>
-	 *    Limpa o conteúdo do console onde o programa está sendo executado.
-	 * </p>
+	 * Limpa o conteúdo do console.
 	 */
 	public void limparConsole() {
 		try {
-			String nomeSistema = System.getProperty("os.name");
+			String os = System.getProperty("os.name").toLowerCase();
 
-			if (nomeSistema.contains("Windows")) {
+			if (os.contains("win")) {
 				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-				return;
-			
 			} else {
-				for (int i = 0; i < 100; i++) {
-					System.out.println();
-				}
+				new ProcessBuilder("clear").inheritIO().start().waitFor();
 			}
 
-		} catch(Exception e) {
-			return;
+		} catch (Exception e) {
+			for (int i = 0; i < 100; i++) {
+				System.out.println();
+			}
 		}
 	}
 
@@ -111,7 +96,7 @@ public class Ged{
 	 * @param array array com os dados.
 	 */
 	public void printArray(Object array) {
-		ia.imprimirArray(array);
+		ia.printArray(array);
 	}
 
 	/**
@@ -319,7 +304,7 @@ public class Ged{
 	 * @throws IllegalArgumentException se o indice for inválido.
 	 */
 	public void remLin(Dados dados, int id) {
-		md.remLim(dados, id);
+		md.dropLin(dados, id);
 	}
 
 	/**
@@ -330,7 +315,7 @@ public class Ged{
 	 * @throws IllegalArgumentException se o indice for inválido.
 	 */
 	public void remCol(Dados dados, int id) {
-		md.remCol(dados, id);
+		md.dropCol(dados, id);
 	}
 
 	/**
@@ -346,8 +331,8 @@ public class Ged{
 	 * @throws IllegalArgumentException se o valor de busca for nulo.
 	 * @throws IllegalArgumentException se o novo valor de substituição for nulo;
 	 */
-	public void setValo(Dados dados, int idLinha, int idColuna, String valor) {
-		md.setValor(dados, idLinha, idColuna, valor);
+	public void setValor(Dados dados, int idLinha, int idColuna, String valor) {
+		md.set(dados, idLinha, idColuna, valor);
 	}
 
 	/**
@@ -363,7 +348,7 @@ public class Ged{
 	 * @throws IllegalArgumentException se o novo valor de substituição for nulo;
 	 */
 	public void setValor(Dados dados, int idColuna, String busca, String valor) {
-		md.setValor(dados, idColuna, busca, valor);
+		md.set(dados, idColuna, busca, valor);
 	}
 
 	/**
@@ -421,7 +406,7 @@ public class Ged{
 	 * @param dados conjunto de dados.
 	 */
 	public void remNaoNumericos(Dados dados) {
-		md.remNaoNumericos(dados);
+		md.dropNaoNumericos(dados);
 	}
 
 	/**
@@ -494,7 +479,7 @@ public class Ged{
 	 * @throws IllegalArgumentException se a quantidade de colunas de A e B forem diferentes.
 	 */
 	public Dados unir(Dados a, Dados b) {
-		return md.unir(a, b);
+		return md.concatenar(a, b);
 	}
 
 	/**
@@ -528,7 +513,7 @@ public class Ged{
 	 * @throws IllegalArgumentException caso a quantiade de linhas de A e B sejam diferentes.
 	 */
 	public Dados unirCols(Dados a, Dados b) {
-		return md.unirColuna(a, b);
+		return md.concatenarColunas(a, b);
 	}
 
 	/**
@@ -553,7 +538,7 @@ public class Ged{
 	 * @param dados conjunto de dados.
 	 */
 	public void remDuplicadas(Dados dados) {
-		md.removerDuplicadas(dados);
+		md.dropDuplicadas(dados);
 	}
 
 	/**
@@ -850,7 +835,7 @@ public class Ged{
 	 * @param dados conjunto de dados.
 	 * @param valor valor de preenchimento em elementos ausentes.
 	 */
-	public void preencherAusentes(Dados dados, double valor) {
+	public void preencherAusentes(Dados dados, String valor) {
 		md.preencherAusentes(dados, valor);
 	}
 
@@ -861,7 +846,7 @@ public class Ged{
 	 * @return novo objeto do tipo {@code Dados} com o mesmo conteúdo do original.
 	 */
 	public Dados clonarDados(Dados dados) {
-		return md.clonarDados(dados);
+		return md.clonar(dados);
 	}
 
 	/**
@@ -877,7 +862,7 @@ public class Ged{
 	 * @param id índice da coluna desejada.
 	 * @param valor valor de preenchimento em elementos ausentes.
 	 */
-	public void preencherAusentes(Dados dados, int id, double valor) {
+	public void preencherAusentes(Dados dados, int id, String valor) {
 		md.preencherAusentes(dados, id, valor);
 	}
 
@@ -938,7 +923,7 @@ public class Ged{
 	 * @param caminho caminho do arquivo onde os dados serão gravados, excluindo a extensão .csv.
 	 */
 	public void exportarCsv(Dados dados, String caminho) {
-		ga.exportarCsv(dados, caminho);
+		ga.paraCsv(dados, caminho);
 	}
 
 	/**
@@ -947,7 +932,7 @@ public class Ged{
 	 * @param caminho caminho do arquivo onde os dados serão gravados, excluindo a extensão .txt.
 	 */
 	public void exportarTxt(Dados dados, String caminho) {
-		ga.exportarTxt(dados, caminho);
+		ga.paraTxt(dados, caminho);
 	}
 
 	// GERENCIADOR TREINO TESTE ---------------------

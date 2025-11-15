@@ -4,12 +4,21 @@ class OperadorMatrizMultithread {
 	
 	private int nThreads = 2;
 
+	/**
+	 * Operador multithread.
+	 * @param nThreads número de threads desejadas.
+	 */
 	public OperadorMatrizMultithread(int nThreads) {
 		this.nThreads = nThreads;
 	}
 
-
-	public int[][] multiplicarMatrizes(int[][] a, int[][] b) {
+	/**
+	 * Realiza a multiplicação matricial entre A e B
+	 * @param a primeira matriz.
+	 * @param b segunda matriz.
+	 * @return resultado da multiplicação.
+	 */
+	public int[][] matmul(int[][] a, int[][] b) {
 		int linA = a.length;
 		int colA = a[0].length;
 		int colB = b[0].length;
@@ -49,8 +58,13 @@ class OperadorMatrizMultithread {
 		return r;
 	}
 
-
-	public float[][] multiplicarMatrizes(float[][] a, float[][] b) {
+	/**
+	 * Realiza a multiplicação matricial entre A e B
+	 * @param a primeira matriz.
+	 * @param b segunda matriz.
+	 * @return resultado da multiplicação.
+	 */
+	public float[][] matmul(float[][] a, float[][] b) {
 		int linA = a.length;
 		int colA = a[0].length;
 		int colB = b[0].length;
@@ -90,8 +104,13 @@ class OperadorMatrizMultithread {
 		return r;
 	}
 
-
-	public double[][] multiplicarMatrizes(double[][] a, double[][] b) {
+	/**
+	 * Realiza a multiplicação matricial entre A e B
+	 * @param a primeira matriz.
+	 * @param b segunda matriz.
+	 * @return resultado da multiplicação.
+	 */
+	public double[][] matmul(double[][] a, double[][] b) {
 		int linA = a.length;
 		int colA = a[0].length;
 		int colB = b[0].length;

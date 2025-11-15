@@ -2,15 +2,22 @@ package ged;
 
 public class ImpressaoDados {
 	
+	/**
+	 * Utilitário de impressão.
+	 */
 	public ImpressaoDados() {}
 
+	/**
+	 * Exibe as linhas iniciais do conjunto de dados.
+	 * @param dados conjunto de dados.
+	 */
 	public void printInicio(Dados dados) {
 		if (dados.vazio()) {
 			dados.print();
 			return;
 		}
 		
-		String espacamento = "   ";
+		String espacamento = " ".repeat(4);
 		int[] shape = dados.shape();
 		int linPadrao = (shape[0] < 5) ? shape[0] : 5;
 

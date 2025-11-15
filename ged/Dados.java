@@ -15,7 +15,6 @@ import java.util.Locale;
  *    e visualização de conteudo. Algumas operações mais elaboradas podem ser executadas
  *    usando o Gerenciador de Dados {@code Ged}.
  * </p>
- * @see https://github.com/thag0/Treinando-Rede-Neural-Artificial/tree/main/utilitarios/ged
  * @author Thiago Barroso, acadêmico de Engenharia da Computação pela Universidade Federal do Pará, 
  * Campus Tucuruí. Maio/2023.
  */
@@ -164,7 +163,7 @@ public class Dados {
 	 * @throws IllegalArgumentException se o conteúdo estiver vazio.
 	 * @throws IllegalArgumentException se os índices fornecidos estiverem fora de alcance.
 	 */
-	public String getItem(int lin, int col) {
+	public String get(int lin, int col) {
 		if (conteudo.isEmpty()) {
 			throw new IllegalArgumentException("O conteúdo está vazio.");
 		}
@@ -189,7 +188,7 @@ public class Dados {
 	 * @param valor novo valor.
 	 * @throws IllegalArgumentException se os índices fornecidos forem inválidos.
 	 */
-	public void setItem(int lin, int col, String valor) {
+	public void set(String valor, int lin, int col) {
 		if (lin < 0 || lin >= conteudo.size()) {
 			throw new IllegalArgumentException(
 				"Índice de linha fornecido (" + lin + ") é inválido."
@@ -215,7 +214,7 @@ public class Dados {
 	 * @throws IllegalArgumentException se o conteúdo dos dados não for simétrico.
 	 * @throws IllegalArgumentException se o índice de coluna for inválido.
 	 */
-	public void setItem(int col, String busca, String valor) {
+	public void set(String valor, int col, String busca) {
 		if (!simetrico()) {
 			throw new IllegalArgumentException("O conteúdo dos dados deve ser simétrico.");
 		}
@@ -452,18 +451,18 @@ public class Dados {
 	 *    5 
 	 * ]
 	 * </pre>
-	 * @param col índice da coluna desejada.
+	 * @param id índice da coluna desejada.
 	 * @return conjunto de dados contendo o conteúdo da coluna indicada.
 	 * @throws IllegalArgumentException se o conteúdo dos dados não for simétrico. 
 	 * @throws IllegalArgumentException se o índice fornecido for inválido.
 	 */
-	public Dados coluna(int col) {
+	public Dados coluna(int id) {
 		if (!simetrico()) {
 			throw new IllegalArgumentException("O conteúdo dos dados deve ser simétrico.");
 		}
-		if (col < 0 || col >= this.conteudo.get(0).length) {
+		if (id < 0 || id >= this.conteudo.get(0).length) {
 			throw new IllegalArgumentException(
-				"Índice da coluna fornecido (" + col + ") é inválido."
+				"Índice da coluna fornecido (" + id + ") é inválido."
 			);
 		}
 
@@ -473,12 +472,12 @@ public class Dados {
 		//da coluna desejada
 		for (String[] linha : this.conteudo) {
 			String[] novaLinha = new String[1];
-			novaLinha[0] = linha[col];
+			novaLinha[0] = linha[id];
 			conteudo.add(novaLinha);
 		}
 
 		Dados d = new Dados(conteudo);
-		d.nome = "Coluna " + col;
+		d.nome = "Coluna " + id;
 		d.alteracoes = 0;
 		return d;
 	}
@@ -1323,7 +1322,7 @@ public class Dados {
 	 * de {@code Dados} com o mesmo conteúdo.
 	 * @return novo objeto do tipo {@code Dados} com a cópia do conteúdo.
 	 */
-	public Dados clonar() {
+	public Dados clone() {
 		ArrayList<String[]> cloneConteudo = new ArrayList<>();
 		for (String[] linha : this.conteudo) {
 			cloneConteudo.add(linha);
@@ -1335,7 +1334,6 @@ public class Dados {
 
 		return cloneDados;
 	}
-
 
 	@Override
 	public String toString() {

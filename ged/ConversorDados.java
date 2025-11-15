@@ -24,7 +24,7 @@ class ConversorDados {
 		for (int i = 0; i < shape[0]; i++) {
 			for (int j = 0; j < shape[1]; j++) { 
 				try {
-					convertido[i][j] = Integer.parseInt(dados.getItem(i, j));
+					convertido[i][j] = Integer.parseInt(dados.get(i, j));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,7 +47,7 @@ class ConversorDados {
 		for (int i = 0; i < shape[0]; i++) {
 			for (int j = 0; j < shape[1]; j++) { 
 				try {
-					convertido[i][j] = Float.parseFloat(dados.getItem(i, j));
+					convertido[i][j] = Float.parseFloat(dados.get(i, j));
 				} catch(Exception e) {
 					e.printStackTrace();
 				}
@@ -70,7 +70,7 @@ class ConversorDados {
 		for (int i = 0; i < shape[0]; i++) {
 			for (int j = 0; j < shape[1]; j++) { 
 				try {
-					convertido[i][j] = Double.parseDouble(dados.getItem(i, j));
+					convertido[i][j] = Double.parseDouble(dados.get(i, j));
 				} catch(Exception e) {
 					e.printStackTrace();
 				}
@@ -93,7 +93,7 @@ class ConversorDados {
 		for (int i = 0; i < shape[0]; i++) {
 			for (int j = 0; j < shape[1]; j++) { 
 				try {
-					convertido[i][j] = dados.getItem(i, j);
+					convertido[i][j] = dados.get(i, j);
 				} catch(Exception e) {
 					e.printStackTrace();
 				}

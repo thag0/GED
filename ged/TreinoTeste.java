@@ -15,6 +15,10 @@ class TreinoTeste{
 
    //embaralhar
 
+   /**
+    * Embaralha as linhas do conjunto de dados.
+    * @param dados conjunto de dados.
+    */
    public void embaralharDados(Object dados) {
       if (dados instanceof int[][]) {
          int[][] d = (int[][]) dados;
@@ -36,6 +40,10 @@ class TreinoTeste{
       }
    }
 
+   /**
+    * Embaralha as linhas do conjunto de dados.
+    * @param dados conjunto de dados.
+    */
    private void embaralharDados(int[][] dados) {
       Random random = new Random();
       int linhas = dados.length;
@@ -51,6 +59,10 @@ class TreinoTeste{
       }
    }
 
+   /**
+    * Embaralha as linhas do conjunto de dados.
+    * @param dados conjunto de dados.
+    */
    private void embaralharDados(float[][] dados) {
       Random random = new Random();
       int linhas = dados.length;
@@ -66,6 +78,10 @@ class TreinoTeste{
       }
    }
 
+   /**
+    * Embaralha as linhas do conjunto de dados.
+    * @param dados conjunto de dados.
+    */
    private void embaralharDados(double[][] dados) {
       Random random = new Random();
       int linhas = dados.length;
@@ -83,18 +99,24 @@ class TreinoTeste{
 
    //separar entrada
 
-   public Object separarDadosEntrada(Object dados, int colunas) {
+   /**
+    * Divide os dados de entrada a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para entrada.
+    * @return dados de entrada.
+    */
+   public Object separarDadosEntrada(Object dados, int cols) {
       if (dados instanceof int[][]) {
          int[][] m = (int[][]) dados;
-         return separarDadosEntrada(m, colunas);
+         return separarDadosEntrada(m, cols);
       
       } else if (dados instanceof float[][]) {
          float[][] m = (float[][]) dados;
-         return separarDadosEntrada(m, colunas);
+         return separarDadosEntrada(m, cols);
       
       } else if (dados instanceof double[][]) {
          double[][] m = (double[][]) dados;
-         return separarDadosEntrada(m, colunas);
+         return separarDadosEntrada(m, cols);
       
       } else {
          throw new IllegalArgumentException(
@@ -103,49 +125,67 @@ class TreinoTeste{
       }  
    }
 
-   private int[][] separarDadosEntrada(int[][] dados, int colunas) {
-      if (colunas > dados[0].length) {
+   /**
+    * Divide os dados de entrada a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para entrada.
+    * @return dados de entrada.
+    */
+   private int[][] separarDadosEntrada(int[][] dados, int cols) {
+      if (cols > dados[0].length) {
          throw new IllegalArgumentException("O número de colunas fornecido é maior do que o número de colunas disponíveis nos dados.");
       }
-      if (colunas < 1) {
+      if (cols < 1) {
          throw new IllegalArgumentException("A quantidade de colunas extraídas não pode ser menor que um");
       }
 
-      int[][] dadosEntrada = new int[dados.length][colunas];
+      int[][] dadosEntrada = new int[dados.length][cols];
       for (int i = 0; i < dadosEntrada.length; i++) {
-         System.arraycopy(dados[i], 0, dadosEntrada[i], 0, colunas);
+         System.arraycopy(dados[i], 0, dadosEntrada[i], 0, cols);
       }
       
       return dadosEntrada;
    }
 
-   private float[][] separarDadosEntrada(float[][] dados, int colunas) {
-      if (colunas > dados[0].length) {
+   /**
+    * Divide os dados de entrada a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para entrada.
+    * @return dados de entrada.
+    */
+   private float[][] separarDadosEntrada(float[][] dados, int cols) {
+      if (cols > dados[0].length) {
          throw new IllegalArgumentException("O número de colunas fornecido é maior do que o número de colunas disponíveis nos dados.");
       }
-      if (colunas < 1) {
+      if (cols < 1) {
          throw new IllegalArgumentException("A quantidade de colunas extraídas não pode ser menor que um");
       }
 
-      float[][] dadosEntrada = new float[dados.length][colunas];
+      float[][] dadosEntrada = new float[dados.length][cols];
       for (int i = 0; i < dadosEntrada.length; i++) {
-         System.arraycopy(dados[i], 0, dadosEntrada[i], 0, colunas);
+         System.arraycopy(dados[i], 0, dadosEntrada[i], 0, cols);
       }
       
       return dadosEntrada;
    }
 
-   private double[][] separarDadosEntrada(double[][] dados, int colunas) {
-      if (colunas > dados[0].length) {
+   /**
+    * Divide os dados de entrada a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para entrada.
+    * @return dados de entrada.
+    */
+   private double[][] separarDadosEntrada(double[][] dados, int cols) {
+      if (cols > dados[0].length) {
          throw new IllegalArgumentException("O número de colunas fornecido é maior do que o número de colunas disponíveis nos dados.");
       }
-      if (colunas < 1) {
+      if (cols < 1) {
          throw new IllegalArgumentException("A quantidade de colunas extraídas não pode ser menor que um");
       }
 
-      double[][] dadosEntrada = new double[dados.length][colunas];
+      double[][] dadosEntrada = new double[dados.length][cols];
       for (int i = 0; i < dadosEntrada.length; i++) {
-         System.arraycopy(dados[i], 0, dadosEntrada[i], 0, colunas);
+         System.arraycopy(dados[i], 0, dadosEntrada[i], 0, cols);
       }
       
       return dadosEntrada;
@@ -153,18 +193,24 @@ class TreinoTeste{
 
    //separar saida
 
-   public Object separarDadosSaida(Object dados, int colunas) {
+   /**
+    * Divide os dados de saída a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para saída.
+    * @return dados de saída.
+    */
+   public Object separarDadosSaida(Object dados, int cols) {
       if (dados instanceof int[][]) {
          int[][] m = (int[][]) dados;
-         return separarDadosSaida(m, colunas);
+         return separarDadosSaida(m, cols);
       
       } else if (dados instanceof float[][]) {
          float[][] m = (float[][]) dados;
-         return separarDadosSaida(m, colunas);
+         return separarDadosSaida(m, cols);
       
       } else if (dados instanceof double[][]) {
          double[][] m = (double[][]) dados;
-         return separarDadosSaida(m, colunas);
+         return separarDadosSaida(m, cols);
       
       } else {
          throw new IllegalArgumentException(
@@ -173,55 +219,73 @@ class TreinoTeste{
       }  
    }
 
-   private int[][] separarDadosSaida(int[][] dados, int colunas) {
-      if (colunas > dados[0].length) {
+   /**
+    * Divide os dados de saída a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para saída.
+    * @return dados de saída.
+    */
+   private int[][] separarDadosSaida(int[][] dados, int cols) {
+      if (cols > dados[0].length) {
          throw new IllegalArgumentException("O número de colunas fornecido é maior do que o número de colunas disponíveis nos dados.");
       }
-      if (colunas < 1) {
+      if (cols < 1) {
          throw new IllegalArgumentException("A quantidade de colunas extraídas não pode ser menor que um");
       }
 
-      int[][] dadosSaida = new int[dados.length][colunas];
-      int indiceInicial = dados[0].length - colunas;
+      int[][] dadosSaida = new int[dados.length][cols];
+      int indiceInicial = dados[0].length - cols;
 
       for (int i = 0; i < dados.length; i++) {
-         System.arraycopy(dados[i], indiceInicial, dadosSaida[i], 0, colunas);
+         System.arraycopy(dados[i], indiceInicial, dadosSaida[i], 0, cols);
       }
 
       return dadosSaida;
    }
 
-   private float[][] separarDadosSaida(float[][] dados, int colunas) {
-      if (colunas > dados[0].length) {
+   /**
+    * Divide os dados de saída a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para saída.
+    * @return dados de saída.
+    */
+   private float[][] separarDadosSaida(float[][] dados, int cols) {
+      if (cols > dados[0].length) {
          throw new IllegalArgumentException("O número de colunas fornecido é maior do que o número de colunas disponíveis nos dados.");
       }
-      if (colunas < 1) {
+      if (cols < 1) {
          throw new IllegalArgumentException("A quantidade de colunas extraídas não pode ser menor que um");
       }
 
-      float[][] dadosSaida = new float[dados.length][colunas];
-      int indiceInicial = dados[0].length - colunas;
+      float[][] dadosSaida = new float[dados.length][cols];
+      int indiceInicial = dados[0].length - cols;
 
       for (int i = 0; i < dados.length; i++) {
-         System.arraycopy(dados[i], indiceInicial, dadosSaida[i], 0, colunas);
+         System.arraycopy(dados[i], indiceInicial, dadosSaida[i], 0, cols);
       }
 
       return dadosSaida;
    }
 
-   private double[][] separarDadosSaida(double[][] dados, int colunas) {
-      if (colunas > dados[0].length) {
+   /**
+    * Divide os dados de saída a partir de um conjunto de dados base.
+    * @param dados conjunto de dados.
+    * @param cols quantidade de colunas desejadas para saída.
+    * @return dados de saída.
+    */
+   private double[][] separarDadosSaida(double[][] dados, int cols) {
+      if (cols > dados[0].length) {
          throw new IllegalArgumentException("O número de colunas fornecido é maior do que o número de colunas disponíveis nos dados.");
       }
-      if (colunas < 1) {
+      if (cols < 1) {
          throw new IllegalArgumentException("A quantidade de colunas extraídas não pode ser menor que um");
       }
 
-      double[][] dadosSaida = new double[dados.length][colunas];
-      int indiceInicial = dados[0].length - colunas;
+      double[][] dadosSaida = new double[dados.length][cols];
+      int indiceInicial = dados[0].length - cols;
 
       for (int i = 0; i < dados.length; i++) {
-         System.arraycopy(dados[i], indiceInicial, dadosSaida[i], 0, colunas);
+         System.arraycopy(dados[i], indiceInicial, dadosSaida[i], 0, cols);
       }
 
       return dadosSaida;
@@ -229,18 +293,24 @@ class TreinoTeste{
 
    //separar treino teste
 
-   public Object separarTreinoTeste(Object dados, float tamanhoTeste) {
+   /**
+    * Separa os dados em um conjunto treino e conjunto de teste. 
+    * @param dados conjunto de dados.
+    * @param tamTeste tamanho dos dados de teste.
+    * @return dados separados.
+    */
+   public Object separarTreinoTeste(Object dados, double tamTeste) {
       if (dados instanceof int[][]) {
          int[][] m = (int[][]) dados;
-         return separarTreinoTesteI(m, tamanhoTeste);
+         return separarTreinoTesteI(m, tamTeste);
       
       } else if (dados instanceof float[][]) {
          float[][] m = (float[][]) dados;
-         return separarTreinoTesteF(m, tamanhoTeste);
+         return separarTreinoTesteF(m, tamTeste);
       
       } else if (dados instanceof double[][]) {
          double[][] m = (double[][]) dados;
-         return separarTreinoTesteD(m, tamanhoTeste);
+         return separarTreinoTesteD(m, tamTeste);
       
       } else {
          throw new IllegalArgumentException(
@@ -249,13 +319,19 @@ class TreinoTeste{
       }  
    }
 
-   private int[][][] separarTreinoTesteI(int[][] dados, float tamanhoTeste) {
+   /**
+    * Separa os dados em um conjunto treino e conjunto de teste. 
+    * @param dados conjunto de dados.
+    * @param tamTeste tamanho dos dados de teste.
+    * @return dados separados.
+    */
+   private int[][][] separarTreinoTesteI(int[][] dados, double tamTeste) {
       if (dados == null) throw new IllegalArgumentException("O conjunto de dados é nulo.");
-      if (tamanhoTeste < 0 || tamanhoTeste > 1) {
+      if (tamTeste < 0 || tamTeste > 1) {
          throw new IllegalArgumentException("O tamanho dos dados de teste deve ser maior que zero e menor que um.");
       }
 
-      int linhasTeste = (int) (dados.length*tamanhoTeste);
+      int linhasTeste = (int) (dados.length*tamTeste);
       int linhasTreino = dados.length - linhasTeste;
       int colunas = dados[0].length;
 
@@ -269,13 +345,19 @@ class TreinoTeste{
       return new int[][][]{treino, teste};
    }
 
-   private float[][][] separarTreinoTesteF(float[][] dados, float tamanhoTeste) {
+   /**
+    * Separa os dados em um conjunto treino e conjunto de teste. 
+    * @param dados conjunto de dados.
+    * @param tamTeste tamanho dos dados de teste.
+    * @return dados separados.
+    */
+   private float[][][] separarTreinoTesteF(float[][] dados, double tamTeste) {
       if (dados == null) throw new IllegalArgumentException("O conjunto de dados é nulo.");
-      if (tamanhoTeste < 0 || tamanhoTeste > 1) {
+      if (tamTeste < 0 || tamTeste > 1) {
          throw new IllegalArgumentException("O tamanho dos dados de teste deve ser maior que zero e menor que um.");
       }
 
-      int linhasTeste = (int) (dados.length*tamanhoTeste);
+      int linhasTeste = (int) (dados.length*tamTeste);
       int linhasTreino = dados.length - linhasTeste;
       int colunas = dados[0].length;
 
@@ -289,13 +371,19 @@ class TreinoTeste{
       return new float[][][]{treino, teste};
    }
 
-   private double[][][] separarTreinoTesteD(double[][] dados, float tamanhoTeste) {
+   /**
+    * Separa os dados em um conjunto treino e conjunto de teste. 
+    * @param dados conjunto de dados.
+    * @param tamTeste tamanho dos dados de teste.
+    * @return dados separados.
+    */
+   private double[][][] separarTreinoTesteD(double[][] dados, double tamTeste) {
       if (dados == null) throw new IllegalArgumentException("O conjunto de dados é nulo.");
-      if (tamanhoTeste < 0 || tamanhoTeste > 1) {
+      if (tamTeste < 0 || tamTeste > 1) {
          throw new IllegalArgumentException("O tamanho dos dados de teste deve ser maior que zero e menor que um.");
       }
 
-      int linhasTeste = (int) (dados.length*tamanhoTeste);
+      int linhasTeste = (int) (dados.length*tamTeste);
       int linhasTreino = dados.length - linhasTeste;
       int colunas = dados[0].length;
 

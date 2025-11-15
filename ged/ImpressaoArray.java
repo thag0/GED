@@ -2,8 +2,24 @@ package ged;
 
 class ImpressaoArray {
 	
+	/**
+	 * Utilitário de impressão.
+	 */
 	public ImpressaoArray() {}
 
+	/**
+	 * Exibe o conteúdo do array.
+	 * @param array array base.
+	 */
+	public void printArray(Object array) {
+		printArray(array, "");
+	}
+
+	/**
+	 * Exibe o conteúdo do array.
+	 * @param array array base.
+	 * @param nome nome para impressão.
+	 */
 	public void printArray(Object array, String nome) {
 		String espacamento = "  ";
 
@@ -61,10 +77,6 @@ class ImpressaoArray {
 		} else {
 			throw new IllegalArgumentException("Tipo de array não suportado.");
 		}
-	}
-
-	public void imprimirArray(Object array) {
-		printArray(array, "");
 	}
 
 }

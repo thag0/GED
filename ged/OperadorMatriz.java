@@ -13,6 +13,11 @@ class OperadorMatriz {
     */
    public OperadorMatriz() {}
 
+   /**
+    * Transforma os dados da matriz em um array.
+    * @param matriz matriz base.
+    * @return dados convertidos.
+    */
    public Object paraArray(Object matriz) {
       if (matriz instanceof int[][]) {
          int[][] m = (int[][]) matriz;
@@ -33,6 +38,11 @@ class OperadorMatriz {
       }
    }
 
+   /**
+    * Transforma os dados da matriz em um array 1D.
+    * @param matriz matriz base.
+    * @return array convertido.
+    */
    private int[] vetorizar(int[][] matriz) {
       int[] arr = new int[matriz.length * matriz[0].length];
    
@@ -47,6 +57,11 @@ class OperadorMatriz {
       return arr;
    }
 
+   /**
+    * Transforma os dados da matriz em um array 1D.
+    * @param matriz matriz base.
+    * @return array convertido.
+    */
    private float[] vetorizar(float[][] matriz) {
       float[] arr = new float[matriz.length * matriz[0].length];
    
@@ -61,6 +76,11 @@ class OperadorMatriz {
       return arr;
    }
 
+   /**
+    * Transforma os dados da matriz em um array 1D.
+    * @param matriz matriz base.
+    * @return array convertido.
+    */
    private double[] vetorizar(double[][] matriz) {
       double[] arr = new double[matriz.length * matriz[0].length];
    
@@ -77,6 +97,13 @@ class OperadorMatriz {
 
    //sublinhas
 
+   /**
+    * Retorna um subconjunto de dados contidos na matriz.
+    * @param matriz matriz base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    public Object obterSubLins(Object matriz, int inicio, int fim) {
       if (matriz instanceof int[][]) {
          int[][] m = (int[][]) matriz;
@@ -96,7 +123,14 @@ class OperadorMatriz {
          );
       }   
    }
-   
+
+   /**
+    * Retorna um subconjunto de dados contidos na matriz.
+    * @param dados dados base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    private int[][] obterSubLinhas(int[][] dados, int inicio, int fim) {
       if (inicio < 0 || fim > dados.length || inicio >= fim) {
          throw new IllegalArgumentException("Índices de início ou fim inválidos.");
@@ -113,6 +147,13 @@ class OperadorMatriz {
       return subMatriz;
    }
 
+   /**
+    * Retorna um subconjunto de dados contidos na matriz.
+    * @param dados dados base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    private float[][] obterSubLinhas(float[][] dados, int inicio, int fim) {
       if (inicio < 0 || fim > dados.length || inicio >= fim) {
          throw new IllegalArgumentException("Índices de início ou fim inválidos.");
@@ -129,6 +170,13 @@ class OperadorMatriz {
       return subMatriz;
    }
 
+   /**
+    * Retorna um subconjunto de dados contidos na matriz.
+    * @param dados dados base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    private double[][] obterSubLinhas(double[][] dados, int inicio, int fim) {
       if (inicio < 0 || fim > dados.length || inicio >= fim) {
          throw new IllegalArgumentException("Índices de início ou fim inválidos.");
@@ -147,6 +195,13 @@ class OperadorMatriz {
 
    //subcolunas
 
+   /**
+    * Retorna um subconjunto de colunas de dados contidos na matriz.
+    * @param matriz matriz base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    public Object obterSubCols(Object matriz, int inicio, int fim) {
       if (matriz instanceof int[][]) {
          int[][] m = (int[][]) matriz;
@@ -167,6 +222,13 @@ class OperadorMatriz {
       }   
    }
 
+   /**
+    * Retorna um subconjunto de colunas de dados contidos na matriz.
+    * @param matriz dados base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    private int[][] obterSubColunas(int[][] matriz, int inicio, int fim) {
       if (inicio < 0 || fim > matriz[0].length || inicio >= fim) {
          throw new IllegalArgumentException("Índices de início ou fim inválidos para colunas.");
@@ -185,6 +247,13 @@ class OperadorMatriz {
       return subColunas;
    }
 
+   /**
+    * Retorna um subconjunto de colunas de dados contidos na matriz.
+    * @param matriz dados base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    private float[][] obterSubColunas(float[][] matriz, int inicio, int fim) {
       if (inicio < 0 || fim > matriz[0].length || inicio >= fim) {
          throw new IllegalArgumentException("Índices de início ou fim inválidos para colunas.");
@@ -203,6 +272,13 @@ class OperadorMatriz {
       return subColunas;
    }
 
+   /**
+    * Retorna um subconjunto de colunas de dados contidos na matriz.
+    * @param matriz dados base.
+    * @param inicio índice de início,
+    * @param fim índice de fim.
+    * @return subconjunto.
+    */
    private double[][] obterSubColunas(double[][] matriz, int inicio, int fim) {
       if (inicio < 0 || fim > matriz[0].length || inicio >= fim) {
          throw new IllegalArgumentException("Índices de início ou fim inválidos para colunas.");
@@ -223,26 +299,31 @@ class OperadorMatriz {
 
    //preencher
    
-   public void preencherMatriz(Object matriz, Number valor) {
-      if (matriz == null || valor == null) {
+   /**
+    * Preenche o conteúdo da matriz.
+    * @param matriz matriz base.
+    * @param val valor desejado.
+    */
+   public void preencherMatriz(Object matriz, Number val) {
+      if (matriz == null || val == null) {
          throw new IllegalArgumentException("Parâmetros fornecidos não podem ser nulos.");
       }
 
       if (matriz instanceof int[][]) {
          int[][] m = (int[][]) matriz;
-         int v = valor.intValue();
+         int v = val.intValue();
          preencherMatriz(m, v);
          matriz = (Object) m;
       
       } else if (matriz instanceof float[][]) {
          float[][] m = (float[][]) matriz;
-         float v = valor.floatValue();
+         float v = val.floatValue();
          preencherMatriz(m, v);
          matriz = (Object) m;
       
       } else if (matriz instanceof double[][]) {
          double[][] m = (double[][]) matriz;
-         double v = valor.doubleValue();
+         double v = val.doubleValue();
          preencherMatriz(m, v);
          matriz = (Object) m;
       
@@ -251,26 +332,41 @@ class OperadorMatriz {
       }
    }
 
-   private void preencherMatriz(int[][] matriz, int valor) {
+   /**
+    * Preenche o conteúdo da matriz.
+    * @param matriz matriz base.
+    * @param val valor desejado.
+    */
+   private void preencherMatriz(int[][] matriz, int val) {
       for (int i = 0; i < matriz.length; i++) {
          for (int j = 0; j < matriz[i].length; j++) {
-            matriz[i][j] = valor;
+            matriz[i][j] = val;
          }
       }
    }
 
-   private void preencherMatriz(float[][] matriz, float valor) {
+   /**
+    * Preenche o conteúdo da matriz.
+    * @param matriz matriz base.
+    * @param val valor desejado.
+    */
+   private void preencherMatriz(float[][] matriz, float val) {
       for (int i = 0; i < matriz.length; i++) {
          for (int j = 0; j < matriz[i].length; j++) {
-            matriz[i][j] = valor;
+            matriz[i][j] = val;
          }
       }
    }
 
-   private void preencherMatriz(double[][] matriz, double valor) {
+   /**
+    * Preenche o conteúdo da matriz.
+    * @param matriz matriz base.
+    * @param val valor desejado.
+    */
+   private void preencherMatriz(double[][] matriz, double val) {
       for (int i = 0; i < matriz.length; i++) {
          for (int j = 0; j < matriz[i].length; j++) {
-            matriz[i][j] = valor;
+            matriz[i][j] = val;
          }
       }
    }
@@ -278,6 +374,10 @@ class OperadorMatriz {
 
    //identidade
 
+   /**
+    * Transforma a matriz no formato identidade.
+    * @param matriz matriz base.
+    */
    public void matId(Object matriz) {
       if (matriz == null) {
          throw new IllegalArgumentException("A matriz fornecida não pode ser nula.");
@@ -303,6 +403,10 @@ class OperadorMatriz {
       }
    }
 
+   /**
+    * Transforma a matriz no formato identidade.
+    * @param matriz matriz base.
+    */
    private void matrizIdentidade(int[][] matriz) {
       for (int i = 0; i < matriz.length; i++) {
          for (int j = 0; j < matriz[i].length; j++) {
@@ -311,6 +415,10 @@ class OperadorMatriz {
       }       
    }
 
+   /**
+    * Transforma a matriz no formato identidade.
+    * @param matriz matriz base.
+    */
    private void matrizIdentidade(float[][] matriz) {
       for (int i = 0; i < matriz.length; i++) {
          for (int j = 0; j < matriz[i].length; j++) {
@@ -319,6 +427,10 @@ class OperadorMatriz {
       }       
    }
 
+   /**
+    * Transforma a matriz no formato identidade.
+    * @param matriz matriz base.
+    */
    private void matrizIdentidade(double[][] matriz) {
       for (int i = 0; i < matriz.length; i++) {
          for (int j = 0; j < matriz[i].length; j++) {
@@ -329,6 +441,7 @@ class OperadorMatriz {
 
    //transposição 
 
+   //TODO
    public Object matTransp(Object matriz) {
       if (matriz instanceof int[][]) {
          int[][] m = (int[][]) matriz;
