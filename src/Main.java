@@ -8,7 +8,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        float[][] arr = {{1,2}, {3, 4}};
-        ged.printMatriz(arr);
+        int[][] a = {{1,2}, {3, 4}};
+        
+        ged.matMultEscalar(a, 2);
+        ged.printMatriz(a);
     }
 }

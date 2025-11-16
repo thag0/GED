@@ -1098,8 +1098,8 @@ public class Ged{
 	 * @param matriz matriz com os dados desejados.
 	 * @return arrays contendo os dados serializados da matriz.
 	 */
-	public Object matParaArray(Object matriz) {
-		return om.paraArray(matriz);
+	public <T> T matParaArray(Object matriz) {
+		return om.vetorizar(matriz);
 	}
 
 	/**
@@ -1115,27 +1115,22 @@ public class Ged{
 	 *    7, 8, 9
 	 * ]
 	 *
-	 * subLinhas = (int[][]) obterSubLinhas(dados, 0, 2);
+	 * subLinhas = obterSubLinhas(dados, 0, 2);
 	 *
 	 * subLinhas = [
 	 *    1, 2, 3
 	 *    4, 5, 6
 	 * ]
 	 * </pre>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
+	 * @param <T> tipo do dado.
 	 * @param dados matriz contendo os dados completos.
 	 * @param inicio índice inicial do corte (inclusivo).
 	 * @param fim índice final do corte (exclusivo).
 	 * @return submatriz contendo o conteúdo da matriz original, com os dados selecionados.
 	 * @throws IllegalArgumentException se os índices fornecidos forem inválidos.
 	 */
-	public Object matSublins(Object dados, int inicio, int fim) {
-		return om.obterSubLins(dados, inicio, fim);
+	public <T> T matSublinhas(Object dados, int inicio, int fim) {
+		return om.obterSubLinhas(dados, inicio, fim);
 	}
 
 	/**
@@ -1171,27 +1166,21 @@ public class Ged{
 	 * @return submatriz contendo o conteúdo da matriz original, com os dados filtrados de acordo
 	 *    com as colunas indicadas.
 	 */
-	public Object matSubcols(Object dados, int inicio, int fim) {
+	public <T> T matSubcols(Object dados, int inicio, int fim) {
 		return om.obterSubCols(dados, inicio, fim);
 	}
 
 	/**
 	 * Preenche cada elemento da matriz de acordo com o valor fornecido.
 	 * <p>
-	 *    O valor de preenchimento é automaticamente convertido para o mesmo 
-	 *    tipo da matriz fornecida.
+	 *    O valor de preenchimento deve ser do mesmo tipo da matriz.
 	 * </p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
 	 *</pre>
 	 * @param matriz matriz com os dados.
-	 * @param valor valor de preenchimento.
+	 * @param val valor de preenchimento.
 	 */
-	public void matPreencher(Object matriz, Number valor) {
-		om.preencherMatriz(matriz, valor);
+	public void matPreencher(Object matriz, Object val) {
+		om.preencherMatriz(matriz, val);
 	}
 
 	/**
@@ -1234,7 +1223,7 @@ public class Ged{
 	 * @param matriz matriz original para transposição
 	 * @return matriz transposta.
 	 */
-	public Object matTransp(Object matriz) {
+	public <T> T matTransp(Object matriz) {
 		return om.matTransp(matriz);
 	}
 
