@@ -1007,7 +1007,7 @@ public class Ged{
 	 * <p>
 	 *    Exemplo de uso:
 	 * </p>
-	 * <pre>{@code 
+	 * <pre>
 	 *int[][][] treinoTeste = (int[][][]) separarTreinoTeste(dados, 0.25f);
 	 *int[][] treino = treinoTeste[0];
 	 *int[][] teste = treinoTeste[1];}
@@ -1027,8 +1027,6 @@ public class Ged{
 	public Object separarTreinoTeste(Object dados, float tamanhoTeste) {
 		return gtt.separarTreinoTeste(dados, tamanhoTeste);
 	}
-
-	//CONVERSOR DE DADOS ----------------------
 
 	/**
 	 * Converte o conteúdo do conjunto de dados para uma matriz bidimensional 
@@ -1070,8 +1068,6 @@ public class Ged{
 		return cd.dadosParaString(dados);
 	}
 
-	//OPERADOR MATRIZ --------------
-
 	/**
 	 * Tranforma todo o conteúdo da matriz fornecida numa forma contínua
 	 * de dados.
@@ -1089,12 +1085,6 @@ public class Ged{
 	 *
 	 * v = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 	 * </pre>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param matriz matriz com os dados desejados.
 	 * @return arrays contendo os dados serializados da matriz.
 	 */
@@ -1154,12 +1144,6 @@ public class Ged{
 	 *    7, 8
 	 * ]
 	 * </pre>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param dados matriz contendo os dados completos.
 	 * @param inicio índice inicial do corte (inclusivo).
 	 * @param fim índice final do corte (exclusivo).
@@ -1193,12 +1177,6 @@ public class Ged{
 	 *  0, 0, 1
 	 * ]
 	 * </pre></p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param matriz matriz base.
 	 */
 	public void matId(Object matriz) {
@@ -1243,12 +1221,6 @@ public class Ged{
 	 *   3, 3
 	 *   3, 3
 	 * ]
-	 * </pre></p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
 	 *</pre>
 	 * @param a primeira matriz.
 	 * @param b segunda matriz.
@@ -1276,12 +1248,6 @@ public class Ged{
 	 *   -1, -1
 	 * ]
 	 * </pre></p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param a primeira matriz.
 	 * @param b segunda matriz.
 	 * @param r matriz que conterá o resultado.
@@ -1307,12 +1273,6 @@ public class Ged{
 	 *   43.0, 50.0
 	 * ]
 	 * </pre></p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param a primeira matriz.
 	 * @param b segunda matriz.
 	 * @param r matriz que conterá o resultado.
@@ -1341,12 +1301,6 @@ public class Ged{
 	 *    O valor do escalar é automaticamente convertido para o mesmo 
 	 *    tipo da matriz fornecida.
 	 * </p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param matriz matriz contendo os dados.
 	 * @param escalar escalar para a ultiplicação.
 	 */
@@ -1371,12 +1325,6 @@ public class Ged{
 	 *   16, 25
 	 * ]
 	 * </pre></p>
-	 * Dados suportados:
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param a primeira matriz.
 	 * @param b segunda matriz.
 	 * @param r matriz que conterá o resultado.
