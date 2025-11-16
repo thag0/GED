@@ -8,9 +8,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[][] a = {{1,2}, {3, 4}};
+        double[][] a = {
+            {1, 1, 1, 1},
+            {2, 2, 2, 2},
+            {3, 3, 3, 3},
+            {4, 4, 4, 4}
+        };
         
-        ged.matMultEscalar(a, 2);
-        ged.printMatriz(a);
+        double[][][] sep = ged.separarTreinoTeste(a, 0.25);
+        ged.printMatriz(sep[0], "treino");
+        ged.printMatriz(sep[1], "teste");
     }
 }

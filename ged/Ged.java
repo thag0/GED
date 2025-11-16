@@ -1,5 +1,13 @@
 package ged;
 
+import ged.utils.ConversorDados;
+import ged.utils.GerenciadorArquivos;
+import ged.utils.Impressao;
+import ged.utils.ManipuladorDados;
+import ged.utils.OperadorMatriz;
+import ged.utils.OperadorMatrizMultithread;
+import ged.utils.TreinoTeste;
+
 /**
  * <p>
  *    Gerenciador de Dados.
@@ -905,12 +913,6 @@ public class Ged{
 	 *    A alteração irá afetar o conteúdo dos dados recebidos.
 	 *    Caso queira manter os dados originais, é recomendado fazer uma cópia previamente.
 	 * </p>
-	 * Dados suportados: 
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param dados matriz de conjunto de dados.
 	 */
 	public void embaralharDados(Object dados) {
@@ -941,18 +943,13 @@ public class Ged{
 	 *    7, 8 
 	 * ]
 	 * </pre>
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param dados conjunto de dados completo.
 	 * @param colunas quantidade de colunas que serão preservadas, começando pela primeira até o valor fornecido.
 	 * @return nova matriz de dados apenas com as colunas desejadas.
 	 * @throws IllegalArgumentException Se o número de colunas for maior que o número de colunas disponíveis nos dados.
 	 * @throws IllegalArgumentException Se o número de colunas for menor que um.
 	 */
-	public Object separarDadosEntrada(Object dados, int colunas) {
+	public <T> T separarDadosEntrada(Object dados, int colunas) {
 		return gtt.separarDadosEntrada(dados, colunas);
 	}
 
@@ -981,18 +978,13 @@ public class Ged{
 	 *    8, 9
 	 * ]
 	 * </pre>
-	 * <pre>
-	 *int[][];
-	 *float[][];
-	 *double[][];
-	 *</pre>
 	 * @param dados O conjunto de dados com as informações completas.
 	 * @param colunas O número de colunas de dados de saída que serão extraídas.
 	 * @return novo conjunto de dados com apenas as colunas de dados de saída.
 	 * @throws IllegalArgumentException Se o número de colunas for maior que o número de colunas disponíveis nos dados.
 	 * @throws IllegalArgumentException Se o número de colunas for menor que um.
 	 */
-	public Object separarDadosSaida(Object dados, int colunas) {
+	public <T> T separarDadosSaida(Object dados, int colunas) {
 		return gtt.separarDadosSaida(dados, colunas);
 	}
 
@@ -1019,13 +1011,13 @@ public class Ged{
 	 *double[][];
 	 *</pre>
 	 * @param dados O conjunto de dados completo.
-	 * @param tamanhoTeste O tamanho relativo do conjunto de teste (entre 0 e 1).
+	 * @param tamTeste O tamanho relativo do conjunto de teste (entre 0 e 1).
 	 * @return Um array de duas matrizes contendo os dados de treino e teste, respectivamente.
 	 * @throws IllegalArgumentException caso o conjunto de dados for nulo.
 	 * @throws IllegalArgumentException caso o tamanho de teste estiver fora do intervalo (0, 1).
 	 */
-	public Object separarTreinoTeste(Object dados, float tamanhoTeste) {
-		return gtt.separarTreinoTeste(dados, tamanhoTeste);
+	public <T> T separarTreinoTeste(Object dados, double tamTeste) {
+		return gtt.separarTreinoTeste(dados, tamTeste);
 	}
 
 	/**

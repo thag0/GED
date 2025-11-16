@@ -1,6 +1,8 @@
-package ged;
+package ged.utils;
 
 import java.lang.reflect.Array;
+
+import ged.Dados;
 
 public class Impressao {
     
