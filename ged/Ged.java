@@ -24,7 +24,6 @@ package ged;
 public class Ged{
 
 	Impressao im = new Impressao();//exibição
-	ImpressaoDados id = new ImpressaoDados();//exibição
 	ManipuladorDados md = new ManipuladorDados();;//manipulador de dados
 	GerenciadorArquivos ga = new GerenciadorArquivos();//leitor de arquivos
 	ConversorDados cd = new ConversorDados();//conversor de dados 
@@ -78,7 +77,7 @@ public class Ged{
 	 * @param dados conjunto de dados.
 	 */
 	public void printInicio(Dados dados) {
-		id.printInicio(dados);
+		im.printIncioDados(dados);
 	}
 
 	/**
