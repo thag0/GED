@@ -5,6 +5,9 @@ set SRC_DIR=ged
 set BIN_DIR=bin
 set JAVA_FILES=
 
+if exist "%BIN_DIR%" rmdir /S /Q "%BIN_DIR%"
+mkdir "%BIN_DIR%"
+
 echo Coletando arquivos
 for /R "%SRC_DIR%" %%f in (*.java) do (
     set JAVA_FILES=!JAVA_FILES! "%%f"
@@ -17,9 +20,6 @@ if %errorlevel% neq 0 (
     exit /b %errorlevel%
 )
 
-echo.
-echo Gerando JAR
-if exist "%BIN_DIR%\ged.jar" del "%BIN_DIR%\ged.jar"
 jar cvf "%BIN_DIR%\ged.jar" -C "%BIN_DIR%" .
 
 echo.
