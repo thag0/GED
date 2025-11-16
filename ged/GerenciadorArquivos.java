@@ -116,11 +116,17 @@ class GerenciadorArquivos {
 	 * @param caminho caminho desejado.
 	 */
 	public void paraCsv(Dados dados, String caminho) {
+		if (!caminho.endsWith(".csv")) {
+			throw new IllegalArgumentException(
+				"\nCaminho deve conter a extensão .csv"
+			);
+		}
+
 		String separador = ",";
 
 		ArrayList<String[]> conteudo = dados.conteudo();
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminho + ".csv"))) {			
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminho))) {			
 			for (String[] linha : conteudo) {
 				for (int i = 0; i < linha.length; i++) {
 
@@ -141,11 +147,17 @@ class GerenciadorArquivos {
 	 * @param caminho caminho desejado.
 	 */
 	public void paraTxt(Dados dados, String caminho) {
+		if (!caminho.endsWith(".txt")) {
+			throw new IllegalArgumentException(
+				"\nCaminho deve conter a extensão .csv"
+			);
+		}
+
 		String separador = " ";
 
 		ArrayList<String[]> conteudo = dados.conteudo();
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminho + ".txt"))) {			
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminho))) {			
 			for (String[] linha : conteudo) {
 				for (int i = 0; i < linha.length; i++) {
 
