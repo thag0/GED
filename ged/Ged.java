@@ -916,7 +916,7 @@ public class Ged{
 	 * @param dados matriz de conjunto de dados.
 	 */
 	public void embaralharDados(Object dados) {
-		gtt.embaralharDados(dados);
+		om.embaralharDados(dados);
 	}
 
 	/**

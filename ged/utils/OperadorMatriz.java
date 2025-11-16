@@ -1,6 +1,7 @@
 package ged.utils;
 
 import java.lang.reflect.Array;
+import java.util.Random;
 
 /**
  * Operador de matrizes do Ged.
@@ -52,6 +53,38 @@ public class OperadorMatriz {
 		}
 
 		return (T) vetor;
+	}
+
+	/**
+	 * Embaralha as linhas do conjunto de dados.
+	 * @param mat conjunto de dados.
+	 */
+	public void embaralharDados(Object mat) {
+		if (!isMatriz(mat)) {
+			throw new IllegalArgumentException("\nO parâmetro não é uma matriz 2D.");
+		}
+
+		Random random = new Random();
+		int linhas = Array.getLength(mat);
+
+		Object tempLinha = null;
+		for (int i = linhas - 1; i > 0; i--) {
+			int j = random.nextInt(i + 1);
+
+			Object linhaI = Array.get(mat, i);
+			Object linhaJ = Array.get(mat, j);
+
+			if (tempLinha == null) {
+				tempLinha = Array.newInstance(
+						linhaI.getClass().getComponentType(),
+						Array.getLength(linhaI)
+				);
+			}
+
+			System.arraycopy(linhaI, 0, tempLinha, 0, Array.getLength(linhaI));
+			System.arraycopy(linhaJ, 0, linhaI, 0, Array.getLength(linhaJ));
+			System.arraycopy(tempLinha, 0, linhaJ, 0, Array.getLength(tempLinha));
+		}
 	}
 
     /**
